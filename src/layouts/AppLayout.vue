@@ -39,7 +39,9 @@
           <LayoutDashboard :size="20" />
           {{ t('nav.dashboard') }}
         </router-link>
+        
         <router-link 
+          v-if="canViewModule('properties')"
           to="/dashboard/properties" 
           class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
           :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/properties') }"
@@ -47,7 +49,9 @@
           <Building2 :size="20" />
           {{ t('nav.properties') }}
         </router-link>
+        
         <router-link 
+          v-if="canViewModule('leads')"
           to="/dashboard/leads" 
           class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
           :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/leads') }"
@@ -55,7 +59,9 @@
           <UserPlus :size="20" />
           {{ t('nav.leads') }}
         </router-link>
+        
         <router-link 
+          v-if="canViewModule('agents')"
           to="/dashboard/agents" 
           class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
           :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/agents') }"
@@ -63,7 +69,9 @@
           <Users :size="20" />
           {{ t('nav.agents') }}
         </router-link>
+        
         <router-link 
+          v-if="canViewModule('companies')"
           to="/dashboard/companies" 
           class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
           :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/companies') }"
@@ -71,7 +79,9 @@
           <Briefcase :size="20" />
           {{ t('nav.companies') }}
         </router-link>
+        
         <router-link 
+          v-if="canViewModule('tasks')"
           to="/dashboard/tasks" 
           class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
           :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/tasks') }"
@@ -85,10 +95,18 @@
           <router-link 
             to="/dashboard/admin/settings" 
             class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
-            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin') }"
+            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin/settings') }"
           >
             <Settings :size="20" />
             {{ t('nav.settings') }}
+          </router-link>
+          <router-link 
+            to="/dashboard/admin/profiles" 
+            class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin/profiles') }"
+          >
+            <Shield :size="20" />
+            Profiles & Permissions
           </router-link>
         </div>
       </nav>
@@ -135,9 +153,10 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/auth';
+import { usePermissionStore } from '@/stores/permissions';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import ToastNotification from '@/components/ToastNotification.vue';
 import { 
   LayoutDashboard, 
@@ -149,14 +168,31 @@ import {
   Settings, 
   Languages, 
   User, 
-  LogOut 
+  LogOut,
+  Shield
 } from 'lucide-vue-next';
 
 const authStore = useAuthStore();
+const permissionStore = usePermissionStore();
 const router = useRouter();
 const { t, locale } = useI18n();
 
 const currentLocale = computed(() => locale.value);
+
+// Load permissions when component mounts
+onMounted(async () => {
+  if (!permissionStore.loaded && authStore.user) {
+    await permissionStore.loadPermissions();
+  }
+});
+
+// Helper to check if module should be visible
+const canViewModule = (moduleName) => {
+  // Admin can see everything
+  if (authStore.user?.role === 'admin') return true;
+  // Check permission
+  return permissionStore.shouldShowModule(moduleName);
+};
 
 const toggleLanguage = () => {
   locale.value = locale.value === 'ar' ? 'en' : 'ar';

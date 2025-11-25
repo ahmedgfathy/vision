@@ -79,6 +79,12 @@ const router = createRouter({
                             component: () => import('../views/admin/DropdownList.vue')
                         }
                     ]
+                },
+                {
+                    path: 'admin/profiles',
+                    name: 'admin-profiles',
+                    component: () => import('../views/admin/Profiles.vue'),
+                    meta: { requiresAdmin: true }
                 }
             ]
         }

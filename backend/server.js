@@ -29,6 +29,7 @@ const leadRoutes = require('./routes/leadRoutes');
 const agentRoutes = require('./routes/agentRoutes');
 const companyRoutes = require('./routes/companyRoutes');
 const taskRoutes = require('./routes/taskRoutes');
+const profileRoutes = require('./routes/profileRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
@@ -37,6 +38,7 @@ app.use('/api/leads', leadRoutes);
 app.use('/api/agents', agentRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/profiles', profileRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Vision CRM API' });

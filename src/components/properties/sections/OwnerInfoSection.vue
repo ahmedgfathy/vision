@@ -1,41 +1,41 @@
 <template>
   <div class="bg-white p-6 rounded-lg shadow">
-    <h3 class="text-lg font-semibold mb-4">Owner Information</h3>
+    <h3 class="text-lg font-semibold mb-4">{{ t('properties.fields.ownerInformation') }}</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Property Offered By (required) -->
       <div>
-        <label class="block text-sm font-medium mb-1">Property Offered By *</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.propertyOfferedBy') }} *</label>
         <select
           :value="modelValue.offered_by"
           @input="updateField('offered_by', $event.target.value)"
           required
           class="w-full border rounded px-3 py-2"
         >
-          <option value="">Select</option>
-          <option value="Owner">Owner</option>
-          <option value="Owner Representative">Owner Representative</option>
-          <option value="Broker">Broker</option>
-          <option value="Guard">Guard</option>
+          <option value="">{{ t('properties.options.select') }}</option>
+          <option value="Owner">{{ t('properties.options.owner') }}</option>
+          <option value="Owner Representative">{{ t('properties.options.ownerRepresentative') }}</option>
+          <option value="Broker">{{ t('properties.options.broker') }}</option>
+          <option value="Guard">{{ t('properties.options.guard') }}</option>
         </select>
       </div>
 
       <!-- 4 Update -->
       <div>
-        <label class="block text-sm font-medium mb-1">Update State</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.updateState') }}</label>
         <select
           :value="modelValue.update_state"
           @input="updateField('update_state', $event.target.value)"
           class="w-full border rounded px-3 py-2"
         >
-          <option value="Want Update">Want Update</option>
-          <option value="Is Updated">Is Updated</option>
-          <option value="Hidden">Hidden</option>
+          <option value="Want Update">{{ t('properties.options.wantUpdate') }}</option>
+          <option value="Is Updated">{{ t('properties.options.isUpdated') }}</option>
+          <option value="Hidden">{{ t('properties.options.hidden') }}</option>
         </select>
       </div>
 
       <!-- Name (required) -->
       <div>
-        <label class="block text-sm font-medium mb-1">Owner Name *</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.ownerName') }} *</label>
         <input
           type="text"
           :value="modelValue.owner_name"
@@ -47,7 +47,7 @@
 
       <!-- Mobile No -->
       <div>
-        <label class="block text-sm font-medium mb-1">Mobile No</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.mobile') }}</label>
         <input
           type="tel"
           :value="modelValue.mobile"
@@ -58,7 +58,7 @@
 
       <!-- Tel -->
       <div>
-        <label class="block text-sm font-medium mb-1">Tel</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.tel') }}</label>
         <input
           type="tel"
           :value="modelValue.tel"
@@ -69,7 +69,7 @@
 
       <!-- Last Follow In -->
       <div>
-        <label class="block text-sm font-medium mb-1">Last Follow In</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.lastFollowIn') }}</label>
         <input
           type="date"
           :value="modelValue.last_follow_in"
@@ -80,39 +80,39 @@
 
       <!-- Call Update -->
       <div>
-        <label class="block text-sm font-medium mb-1">Call Update</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.callUpdate') }}</label>
         <select
           :value="modelValue.call_update"
           @input="updateField('call_update', $event.target.value)"
           class="w-full border rounded px-3 py-2"
         >
-          <option value="">Select</option>
-          <option value="Answered">Answered</option>
-          <option value="No Answer">No Answer</option>
-          <option value="Not Available">Not Available</option>
+          <option value="">{{ t('properties.options.select') }}</option>
+          <option value="Answered">{{ t('properties.options.answered') }}</option>
+          <option value="No Answer">{{ t('properties.options.noAnswer') }}</option>
+          <option value="Not Available">{{ t('properties.options.notAvailable') }}</option>
         </select>
       </div>
 
       <!-- New Feedback (required) -->
       <div>
-        <label class="block text-sm font-medium mb-1">New Feedback *</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.newFeedback') }} *</label>
         <select
           :value="modelValue.new_feedback"
           @input="updateField('new_feedback', $event.target.value)"
           required
           class="w-full border rounded px-3 py-2"
         >
-          <option value="">Select</option>
-          <option value="Done">Done</option>
-          <option value="Under Follow Up">Under Follow Up</option>
-          <option value="Unknown">Unknown</option>
-          <option value="Need Follow">Need Follow</option>
+          <option value="">{{ t('properties.options.select') }}</option>
+          <option value="Done">{{ t('properties.options.done') }}</option>
+          <option value="Under Follow Up">{{ t('properties.options.underFollowUp') }}</option>
+          <option value="Unknown">{{ t('properties.options.unknown') }}</option>
+          <option value="Need Follow">{{ t('properties.options.needFollow') }}</option>
         </select>
       </div>
 
       <!-- Note of Call -->
       <div class="md:col-span-3">
-        <label class="block text-sm font-medium mb-1">Note of Call</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.callNote') }}</label>
         <textarea
           rows="2"
           :value="modelValue.call_note"
@@ -125,6 +125,10 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const props = defineProps({
   modelValue: {
     type: Object,

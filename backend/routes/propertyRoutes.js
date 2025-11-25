@@ -3,6 +3,7 @@ const router = express.Router();
 const propertyController = require('../controllers/propertyController');
 const { authenticateToken } = require('../middleware/authMiddleware');
 const { checkPermission } = require('../middleware/checkPermission');
+const { checkModulePermission, filterResponseFields, validateFieldEdits } = require('../middleware/rbacMiddleware');
 const upload = require('../middleware/upload');
 
 // All property routes require authentication
@@ -10,44 +11,48 @@ router.use(authenticateToken);
 
 // Property CRUD routes with RBAC
 router.get('/',
-    checkPermission('properties.view'),
+    checkModulePermission('properties', 'view'),
+    filterResponseFields('properties'),
     propertyController.getAll
 );
 
 router.get('/:id',
-    checkPermission('properties.view'),
+    checkModulePermission('properties', 'view'),
+    filterResponseFields('properties'),
     propertyController.getOne
 );
 
 router.post('/',
-    checkPermission('properties.create'),
+    checkModulePermission('properties', 'create'),
+    validateFieldEdits('properties'),
     propertyController.create
 );
 
 router.put('/:id',
-    checkPermission('properties.update'),
+    checkModulePermission('properties', 'edit'),
+    validateFieldEdits('properties'),
     propertyController.update
 );
 
 router.delete('/:id',
-    checkPermission('properties.delete'),
+    checkModulePermission('properties', 'delete'),
     propertyController.delete
 );
 
 // Gallery routes
 router.post('/:id/gallery',
-    checkPermission('properties.update'),
+    checkModulePermission('gallery', 'create'),
     upload.array('images', 20), // Max 20 images
     propertyController.uploadGallery
 );
 
 router.delete('/:id/gallery/:imageId',
-    checkPermission('properties.update'),
+    checkModulePermission('gallery', 'delete'),
     propertyController.deleteGalleryImage
 );
 
 router.patch('/:id/gallery/:imageId/set-primary',
-    checkPermission('properties.update'),
+    checkModulePermission('gallery', 'edit'),
     propertyController.setPrimaryImage
 );
 

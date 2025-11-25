@@ -46,7 +46,7 @@
 
       <!-- Bedrooms -->
       <div>
-        <label class="block text-sm font-medium mb-1">Bedrooms</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.bedrooms') }}</label>
         <input
           type="number"
           :value="modelValue.bedrooms"
@@ -58,7 +58,7 @@
 
       <!-- Bathrooms -->
       <div>
-        <label class="block text-sm font-medium mb-1">Bathrooms</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.bathrooms') }}</label>
         <input
           type="number"
           :value="modelValue.bathrooms"
@@ -70,7 +70,7 @@
 
       <!-- Parking Spaces -->
       <div>
-        <label class="block text-sm font-medium mb-1">Parking Spaces</label>
+        <label class="block text-sm font-medium mb-1">{{ t('properties.fields.parkingSpaces') }}</label>
         <input
           type="number"
           :value="modelValue.parking_spaces"
@@ -127,7 +127,7 @@
 
       <!-- Property Features -->
       <div class="md:col-span-3 mt-4">
-        <h4 class="font-semibold mb-3">Property Features</h4>
+        <h4 class="font-semibold mb-3">{{ t('properties.fields.propertyFeatures') }}</h4>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
           <label class="flex items-center">
             <input
@@ -136,7 +136,7 @@
               @change="updateField('furnished', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Furnished</span>
+            <span class="text-sm">{{ t('properties.fields.furnished') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -145,7 +145,7 @@
               @change="updateField('has_pool', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Pool</span>
+            <span class="text-sm">{{ t('properties.fields.hasPool') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -154,7 +154,7 @@
               @change="updateField('has_gym', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Gym</span>
+            <span class="text-sm">{{ t('properties.fields.hasGym') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -163,7 +163,7 @@
               @change="updateField('has_security', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Security</span>
+            <span class="text-sm">{{ t('properties.fields.hasSecurity') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -172,7 +172,7 @@
               @change="updateField('has_garden', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Garden</span>
+            <span class="text-sm">{{ t('properties.fields.hasGarden') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -181,7 +181,7 @@
               @change="updateField('has_balcony', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Balcony</span>
+            <span class="text-sm">{{ t('properties.fields.hasBalcony') }}</span>
           </label>
           <label class="flex items-center">
             <input
@@ -190,7 +190,7 @@
               @change="updateField('has_elevator', $event.target.checked)"
               class="mr-2"
             />
-            <span class="text-sm">Elevator</span>
+            <span class="text-sm">{{ t('properties.fields.hasElevator') }}</span>
           </label>
         </div>
       </div>
