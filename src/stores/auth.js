@@ -1,14 +1,12 @@
 import { defineStore } from 'pinia';
 import api from '@/api/axios';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { usePermissionStore } from './permissions';
 
 export const useAuthStore = defineStore('auth', () => {
     const user = ref(JSON.parse(localStorage.getItem('user')) || null);
     const accessToken = ref(localStorage.getItem('accessToken') || null);
     const refreshToken = ref(localStorage.getItem('refreshToken') || null);
-    const router = useRouter();
 
     const login = async (email, password) => {
         try {
@@ -51,8 +49,6 @@ export const useAuthStore = defineStore('auth', () => {
         // Clear permissions on logout
         const permissionStore = usePermissionStore();
         permissionStore.clearPermissions();
-        
-        if (router) router.push('/');
     };
 
     const setAuth = (data) => {

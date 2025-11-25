@@ -5,10 +5,14 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/',
+            path: '/login',
             name: 'login',
             component: () => import('../views/Login.vue'),
             meta: { guest: true }
+        },
+        {
+            path: '/',
+            redirect: '/login'
         },
         {
             path: '/dashboard',
@@ -80,7 +84,7 @@ router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
 
     if (to.meta.requiresAuth && !authStore.accessToken) {
-        next('/');
+        next('/login');
     } else if (to.meta.guest && authStore.accessToken) {
         next('/dashboard');
     } else {

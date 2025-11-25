@@ -13,19 +13,6 @@ A comprehensive Real Estate CRM built with Vue 3, Express.js, and MySQL featurin
 - 📊 **Audit Logging** - Complete activity tracking
 - 🎨 **Modern UI** - Built with Tailwind CSS and Lucide Icons
 
-## 📚 Documentation
-
-- **[Technical Documentation](./technical-documentation/)** - All setup guides, troubleshooting, and RBAC docs
-  - [SETUP_GUIDE.md](./technical-documentation/SETUP_GUIDE.md) - Complete setup instructions
-  - [RBAC_INDEX.md](./technical-documentation/RBAC_INDEX.md) - RBAC documentation index
-  - [DATABASE_README.md](./technical-documentation/DATABASE_README.md) - Database documentation
-
-- **[Scripts](./scripts/)** - Utility scripts for maintenance
-  - Database operations (backup, restore, create dump)
-  - RBAC setup automation
-  - System diagnostics
-  - Backend utilities
-
 ## 🚀 Quick Start
 
 ```bash
