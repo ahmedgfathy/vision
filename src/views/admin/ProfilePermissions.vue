@@ -168,7 +168,7 @@ onMounted(async () => {
 
 async function loadAvailableModulesAndFields() {
   try {
-    const response = await axios.get('/api/profiles/modules-fields');
+    const response = await axios.get('/profiles/modules-fields');
     availableModules.value = response.data.modules;
     moduleFields.value = response.data.fields;
 
@@ -198,7 +198,7 @@ async function loadAvailableModulesAndFields() {
 
 async function loadProfilePermissions() {
   try {
-    const response = await axios.get(`/api/profiles/${props.profile.id}`);
+    const response = await axios.get(`/profiles/${props.profile.id}`);
     const profile = response.data;
 
     // Load module permissions
@@ -239,7 +239,7 @@ async function savePermissions() {
       ...modulePermissions[moduleName]
     }));
 
-    await axios.post(`/api/profiles/${props.profile.id}/modules`, { modules });
+    await axios.post(`/profiles/${props.profile.id}/modules`, { modules });
 
     // Save field permissions
     const fields = [];
@@ -253,7 +253,7 @@ async function savePermissions() {
       });
     });
 
-    await axios.post(`/api/profiles/${props.profile.id}/fields`, { fields });
+    await axios.post(`/profiles/${props.profile.id}/fields`, { fields });
 
     emit('saved');
     emit('close');

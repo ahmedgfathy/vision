@@ -175,7 +175,7 @@ onMounted(() => {
 
 async function loadProfiles() {
   try {
-    const response = await axios.get('/api/profiles');
+    const response = await axios.get('/profiles');
     profiles.value = response.data;
   } catch (error) {
     console.error('Failed to load profiles:', error);
@@ -210,9 +210,9 @@ function editPermissions(profile) {
 async function saveProfile() {
   try {
     if (editingProfile.value) {
-      await axios.put(`/api/profiles/${editingProfile.value.id}`, formData.value);
+      await axios.put(`/profiles/${editingProfile.value.id}`, formData.value);
     } else {
-      await axios.post('/api/profiles', formData.value);
+      await axios.post('/profiles', formData.value);
     }
     closeModal();
     loadProfiles();
@@ -228,7 +228,7 @@ async function deleteProfile(profile) {
   }
 
   try {
-    await axios.delete(`/api/profiles/${profile.id}`);
+    await axios.delete(`/profiles/${profile.id}`);
     loadProfiles();
   } catch (error) {
     console.error('Failed to delete profile:', error);

@@ -82,10 +82,10 @@ export const usePermissionStore = defineStore('permissions', {
      */
     async loadPermissions() {
       if (this.loading) return;
-      
+
       this.loading = true;
       try {
-        const response = await axios.get('/api/profiles/my-permissions');
+        const response = await axios.get('/profiles/my-permissions');
         this.modules = response.data.modules || {};
         this.fields = response.data.fields || {};
         this.loaded = true;
