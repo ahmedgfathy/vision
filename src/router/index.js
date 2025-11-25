@@ -51,8 +51,28 @@ const router = createRouter({
                 },
                 {
                     path: 'leads',
-                    name: 'leads',
-                    component: () => import('../views/leads/Index.vue')
+                    children: [
+                        {
+                            path: '',
+                            name: 'leads-list',
+                            component: () => import('../views/leads/List.vue')
+                        },
+                        {
+                            path: 'create',
+                            name: 'leads-create',
+                            component: () => import('../views/leads/Create.vue')
+                        },
+                        {
+                            path: 'edit/:id',
+                            name: 'leads-edit',
+                            component: () => import('../views/leads/Edit.vue')
+                        },
+                        {
+                            path: 'view/:id',
+                            name: 'leads-view',
+                            component: () => import('../views/leads/View.vue')
+                        }
+                    ]
                 },
                 {
                     path: 'agents',
