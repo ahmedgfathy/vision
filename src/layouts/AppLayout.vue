@@ -1,33 +1,93 @@
 <template>
   <div class="min-h-screen bg-gray-50" :dir="currentLocale === 'ar' ? 'rtl' : 'ltr'">
     <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200" :class="currentLocale === 'ar' ? 'right-0 left-auto border-l border-r-0' : ''">
-      <div class="p-4 border-b border-gray-200">
-        <h1 class="text-2xl font-bold text-gray-800">Vision CRM</h1>
+    <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-sm z-30" :class="currentLocale === 'ar' ? 'right-0 left-auto' : ''">
+      <div class="px-4 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 h-[68px] flex items-center gap-3">
+        <!-- Logo SVG - Abstract Building/Property Icon -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Building shape -->
+          <rect x="4" y="12" width="12" height="20" rx="1" fill="#3b82f6"/>
+          <rect x="20" y="6" width="12" height="26" rx="1" fill="#6366f1"/>
+          <!-- Windows -->
+          <rect x="7" y="15" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="7" y="19" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="7" y="23" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="7" y="27" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="11" y="15" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="11" y="19" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="11" y="23" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="11" y="27" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="23" y="10" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="23" y="14" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="23" y="18" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="23" y="22" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="23" y="26" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="27" y="10" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="27" y="14" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="27" y="18" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="27" y="22" width="2" height="2" fill="white" opacity="0.8"/>
+          <rect x="27" y="26" width="2" height="2" fill="white" opacity="0.8"/>
+        </svg>
+        <h1 class="text-2xl font-bold text-blue-700">Vision CRM</h1>
       </div>
-      <nav class="mt-8">
-        <router-link to="/dashboard" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+      <nav class="mt-4 px-2">
+        <router-link 
+          to="/dashboard" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path === '/dashboard' }"
+        >
+          <LayoutDashboard :size="20" />
           {{ t('nav.dashboard') }}
         </router-link>
-        <router-link to="/dashboard/properties" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <router-link 
+          to="/dashboard/properties" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/properties') }"
+        >
+          <Building2 :size="20" />
           {{ t('nav.properties') }}
         </router-link>
-        <router-link to="/dashboard/leads" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <router-link 
+          to="/dashboard/leads" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/leads') }"
+        >
+          <UserPlus :size="20" />
           {{ t('nav.leads') }}
         </router-link>
-        <router-link to="/dashboard/agents" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <router-link 
+          to="/dashboard/agents" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/agents') }"
+        >
+          <Users :size="20" />
           {{ t('nav.agents') }}
         </router-link>
-        <router-link to="/dashboard/companies" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <router-link 
+          to="/dashboard/companies" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/companies') }"
+        >
+          <Briefcase :size="20" />
           {{ t('nav.companies') }}
         </router-link>
-        <router-link to="/dashboard/tasks" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <router-link 
+          to="/dashboard/tasks" 
+          class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+          :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/tasks') }"
+        >
+          <ListTodo :size="20" />
           {{ t('nav.tasks') }}
         </router-link>
 
         <!-- Admin Section -->
-        <div v-if="authStore.user?.role === 'admin'" class="mt-4 border-t border-gray-200 pt-4">
-          <router-link to="/dashboard/admin/settings" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900" active-class="bg-gray-100 text-gray-900 font-medium">
+        <div v-if="authStore.user?.role === 'admin'" class="mt-4 pt-4 border-t border-gray-200">
+          <router-link 
+            to="/dashboard/admin/settings" 
+            class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
+            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin') }"
+          >
+            <Settings :size="20" />
             {{ t('nav.settings') }}
           </router-link>
         </div>
@@ -36,26 +96,26 @@
 
     <!-- Main Content -->
     <div class="flex-1" :class="currentLocale === 'ar' ? 'mr-64' : 'ml-64'">
-      <!-- Top Bar -->
-      <div class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+      <!-- Top Bar - Now Static -->
+      <div class="sticky top-0 bg-white px-6 py-4 flex justify-between items-center shadow-sm z-20">
         <div></div>
         <div class="flex items-center gap-4">
           <!-- Language Switcher -->
           <button
             @click="toggleLanguage"
-            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition border border-gray-300"
+            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 transition hover:border-blue-300"
             :title="currentLocale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'"
           >
-            <span class="text-sm font-medium text-gray-700">{{ currentLocale === 'ar' ? 'عربي' : 'EN' }}</span>
-            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-            </svg>
+            <Languages :size="18" class="text-blue-600" />
+            <span class="text-sm font-medium text-gray-700">{{ currentLocale === 'ar' ? 'عربي' : 'English' }}</span>
           </button>
 
           <!-- User Info -->
-          <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-700">{{ authStore.user?.username }}</span>
-            <button @click="handleLogout" class="text-sm text-red-600 hover:text-red-800">
+          <div class="flex items-center gap-3 px-3 py-2 bg-gray-50 rounded-lg">
+            <User :size="18" class="text-gray-600" />
+            <span class="text-sm font-medium text-gray-700">{{ authStore.user?.username }}</span>
+            <button @click="handleLogout" class="flex items-center gap-1 text-sm text-red-600 hover:text-red-700 ml-2">
+              <LogOut :size="16" />
               {{ t('nav.logout') }}
             </button>
           </div>
@@ -63,7 +123,7 @@
       </div>
 
       <!-- Page Content -->
-      <main class="p-6">
+      <main class="p-6 bg-gray-50 min-h-screen">
         <router-view />
       </main>
     </div>
@@ -79,6 +139,18 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { computed } from 'vue';
 import ToastNotification from '@/components/ToastNotification.vue';
+import { 
+  LayoutDashboard, 
+  Building2, 
+  UserPlus, 
+  Users, 
+  Briefcase, 
+  ListTodo, 
+  Settings, 
+  Languages, 
+  User, 
+  LogOut 
+} from 'lucide-vue-next';
 
 const authStore = useAuthStore();
 const router = useRouter();

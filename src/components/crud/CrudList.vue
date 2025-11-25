@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white shadow-md rounded my-6">
-    <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
-      <h3 class="text-lg font-semibold text-gray-700">{{ title }}</h3>
-      <button @click="$emit('create')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+  <div class="bg-white shadow-md rounded-lg my-6">
+    <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <h3 class="text-lg font-semibold text-gray-800">{{ title }}</h3>
+      <button @click="$emit('create')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
         Add New
       </button>
     </div>

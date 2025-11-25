@@ -24,14 +24,14 @@
       <div class="flex gap-4">
         <button
           type="submit"
-          class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700"
+          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
         >
           {{ isEdit ? 'Update' : 'Create' }}
         </button>
         <button
           type="button"
           @click="$emit('cancel')"
-          class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors shadow-sm"
         >
           Cancel
         </button>

@@ -15,8 +15,9 @@
       <button
         type="button"
         @click="$refs.fileInput.click()"
-        class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2 transition-colors shadow-sm"
       >
+        <Upload :size="18" />
         {{ t('properties.gallery.chooseImages') }}
       </button>
       <button
@@ -24,8 +25,9 @@
         type="button"
         @click="uploadImages"
         :disabled="uploading"
-        class="ml-2 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 disabled:bg-gray-400"
+        class="ml-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 disabled:bg-gray-400 flex items-center gap-2 transition-colors shadow-sm"
       >
+        <ImagePlus :size="18" />
         {{ uploading ? t('properties.gallery.uploading') : `${t('properties.gallery.upload')} ${selectedFiles.length}` }}
       </button>
     </div>
@@ -55,19 +57,20 @@
           <button
             v-if="!image.is_primary"
             @click="setPrimary(image.id)"
-            class="bg-gray-700 text-white p-1 rounded hover:bg-gray-800 text-xs"
+            class="bg-yellow-500 text-white p-1.5 rounded-lg hover:bg-yellow-600 text-xs shadow-sm transition-colors"
             :title="t('properties.gallery.setPrimary')"
           >
-            ★
+            <Star :size="14" />
           </button>
           <button
             @click="deleteImage(image.id)"
-            class="bg-red-600 text-white p-1 rounded-full hover:bg-red-700"
+            class="bg-red-500 text-white p-1.5 rounded-lg hover:bg-red-600 shadow-sm transition-colors"
           >
-            ×
+            <X :size="14" />
           </button>
         </div>
-        <span v-if="image.is_primary" class="absolute bottom-1 left-1 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+        <span v-if="image.is_primary" class="absolute bottom-1 left-1 bg-yellow-500 text-white text-xs px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+          <Star :size="12" fill="white" />
           {{ t('properties.gallery.primary') }}
         </span>
       </div>
@@ -81,6 +84,7 @@ import { ref } from 'vue';
 import { usePropertyStore } from '@/stores/propertyStore';
 import { useToast } from '@/composables/useToast';
 import { useI18n } from 'vue-i18n';
+import { Upload, ImagePlus, Star, X } from 'lucide-vue-next';
 
 const { t } = useI18n();
 

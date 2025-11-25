@@ -8,9 +8,10 @@
       <button
         v-if="canCreate"
         @click="showCreateModal = true"
-        class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2 transition-colors shadow-sm"
       >
-        + Add New
+        <Plus :size="18" />
+        Add New
       </button>
     </div>
 
@@ -70,6 +71,7 @@ import { storeToRefs } from 'pinia';
 import AdminTable from '@/components/admin/AdminTable.vue';
 import AdminForm from '@/components/admin/AdminForm.vue';
 import ConfirmDeleteModal from '@/components/admin/ConfirmDeleteModal.vue';
+import { Plus } from 'lucide-vue-next';
 
 const route = useRoute();
 const adminStore = useAdminStore();

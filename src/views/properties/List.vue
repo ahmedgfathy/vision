@@ -5,9 +5,10 @@
       <button
         v-if="canCreate"
         @click="$router.push('/dashboard/properties/create')"
-        class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2 transition-colors shadow-sm"
       >
-        <span class="mr-2">+</span> {{ t('properties.addNew') }}
+        <Plus :size="18" />
+        {{ t('properties.addNew') }}
       </button>
     </div>
 
@@ -86,22 +87,25 @@
           <div class="flex gap-2">
             <button
               @click="$router.push(`/dashboard/properties/view/${property.id}`)"
-              class="flex-1 bg-gray-700 text-white px-3 py-2 rounded text-sm hover:bg-gray-800"
+              class="flex-1 bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 flex items-center justify-center gap-1 transition-colors"
             >
+              <Eye :size="16" />
               {{ t('properties.view') }}
             </button>
             <button
               v-if="canUpdate"
               @click="$router.push(`/dashboard/properties/edit/${property.id}`)"
-              class="flex-1 bg-gray-600 text-white px-3 py-2 rounded text-sm hover:bg-gray-700"
+              class="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-yellow-600 flex items-center justify-center gap-1 transition-colors"
             >
+              <Edit :size="16" />
               {{ t('properties.edit') }}
             </button>
             <button
               v-if="canDelete"
               @click="confirmDelete(property.id)"
-              class="flex-1 bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700"
+              class="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-red-600 flex items-center justify-center gap-1 transition-colors"
             >
+              <Trash2 :size="16" />
               {{ t('properties.delete') }}
             </button>
           </div>
@@ -119,6 +123,7 @@ import { useToast } from '@/composables/useToast';
 import { useI18n } from 'vue-i18n';
 import { storeToRefs } from 'pinia';
 import PropertyImageCarousel from '@/components/properties/PropertyImageCarousel.vue';
+import { Plus, Eye, Edit, Trash2 } from 'lucide-vue-next';
 
 const propertyStore = usePropertyStore();
 const authStore = useAuthStore();

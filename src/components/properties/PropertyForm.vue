@@ -61,10 +61,10 @@
 
     <!-- Actions -->
     <div class="flex gap-4">
-      <button type="submit" class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900">
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
         {{ isEdit ? t('properties.actions.update') : t('properties.actions.create') }} {{ t('properties.title').slice(0, -1) }}
       </button>
-      <button type="button" @click="$emit('cancel')" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+      <button type="button" @click="$emit('cancel')" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors shadow-sm">
         {{ t('properties.actions.cancel') }}
       </button>
     </div>

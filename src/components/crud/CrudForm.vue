@@ -23,10 +23,10 @@
         ></textarea>
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors shadow-sm" type="submit">
           {{ isEdit ? 'Update' : 'Create' }}
         </button>
-        <button @click="$emit('cancel')" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <button @click="$emit('cancel')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors shadow-sm" type="button">
           Cancel
         </button>
       </div>
