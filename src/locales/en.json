@@ -6,8 +6,31 @@
         "agents": "Agents",
         "companies": "Companies",
         "tasks": "Tasks",
-        "settings": "Settings",
+        "administration": "Administration",
         "logout": "Logout"
+    },
+    "administration": {
+        "title": "Administration",
+        "subtitle": "Manage system settings and permissions",
+        "tabs": {
+            "profiles": "Profiles & Permissions",
+            "dropdowns": "Dropdown Lists",
+            "users": {
+                "label": "Users",
+                "title": "User Management",
+                "comingSoon": "Coming Soon - User management page will be added"
+            },
+            "system": {
+                "label": "System Settings",
+                "title": "System Settings",
+                "comingSoon": "Coming Soon - System settings will be added"
+            },
+            "audit": {
+                "label": "Audit Logs",
+                "title": "Audit Logs",
+                "comingSoon": "Coming Soon - Audit logs will be added"
+            }
+        }
     },
     "properties": {
         "title": "Properties",
@@ -82,22 +105,13 @@
             "hasBalcony": "Balcony",
             "hasElevator": "Elevator",
             "propertyFeatures": "Property Features",
-            "unitOffer": "Unit Offer",
-            "unitFor": "Unit For",
             "status": "Status",
-            "area": "Area",
-            "unitLicense": "Unit License",
             "license": "License",
             "mallName": "Mall Name",
             "communityName": "Community Name",
             "updateInformation": "Update Information",
-            "reminderTime": "Reminder Time",
-            "rentTo": "Rent To",
-            "reminderDate": "Reminder Date",
-            "repeatedStatement": "Repeated Statement",
             "ownerInformation": "Owner Information",
-            "propertyOfferedBy": "Property Offered By",
-            "callNote": "Note of Call"
+            "propertyOfferedBy": "Property Offered By"
         },
         "options": {
             "select": "Select",

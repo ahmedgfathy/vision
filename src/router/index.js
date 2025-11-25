@@ -66,24 +66,9 @@ const router = createRouter({
                     component: () => import('../views/tasks/Index.vue')
                 },
                 {
-                    path: 'admin/settings',
-                    children: [
-                        {
-                            path: '',
-                            name: 'admin-settings',
-                            component: () => import('../views/admin/AdminSettings.vue')
-                        },
-                        {
-                            path: ':table',
-                            name: 'admin-dropdown-list',
-                            component: () => import('../views/admin/DropdownList.vue')
-                        }
-                    ]
-                },
-                {
-                    path: 'admin/profiles',
-                    name: 'admin-profiles',
-                    component: () => import('../views/admin/Profiles.vue'),
+                    path: 'admin',
+                    name: 'admin',
+                    component: () => import('../views/admin/Administration.vue'),
                     meta: { requiresAdmin: true }
                 }
             ]

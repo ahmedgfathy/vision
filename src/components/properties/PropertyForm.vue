@@ -221,12 +221,51 @@ const handleSubmit = () => {
     return;
   }
 
+  // Helper function to convert empty strings to null for numeric fields
+  const cleanNumericField = (value) => {
+    if (value === '' || value === null || value === undefined) return null;
+    return value;
+  };
+
+  // Clean formData - convert empty strings to null for numeric fields
+  const cleanedFormData = {
+    ...formData.value,
+    area_id: cleanNumericField(formData.value.area_id),
+    mall_id: cleanNumericField(formData.value.mall_id),
+    community_id: cleanNumericField(formData.value.community_id),
+    type_id: cleanNumericField(formData.value.type_id),
+    total_price: cleanNumericField(formData.value.total_price),
+    latitude: cleanNumericField(formData.value.latitude),
+    longitude: cleanNumericField(formData.value.longitude),
+    bedrooms: cleanNumericField(formData.value.bedrooms),
+    bathrooms: cleanNumericField(formData.value.bathrooms),
+    parking_spaces: cleanNumericField(formData.value.parking_spaces)
+  };
+
+  // Clean owner_info
+  const cleanedOwnerInfo = {
+    ...ownerInfo.value,
+    update_by: cleanNumericField(ownerInfo.value.update_by)
+  };
+
+  // Clean update_info
+  const cleanedUpdateInfo = {
+    ...updateInfo.value
+  };
+
+  // Clean more_info
+  const cleanedMoreInfo = {
+    ...moreInfo.value,
+    handler_id: cleanNumericField(moreInfo.value.handler_id) || authStore.user.id,
+    phase_id: cleanNumericField(moreInfo.value.phase_id)
+  };
+
   // Combine all sections
   const payload = {
-    ...formData.value,
-    owner_info: ownerInfo.value,
-    update_info: updateInfo.value,
-    more_info: moreInfo.value
+    ...cleanedFormData,
+    owner_info: cleanedOwnerInfo,
+    update_info: cleanedUpdateInfo,
+    more_info: cleanedMoreInfo
   };
 
   emit('submit', payload);

@@ -6,8 +6,31 @@
         "agents": "الوكلاء",
         "companies": "الشركات",
         "tasks": "المهام",
-        "settings": "الإعدادات",
+        "administration": "الإدارة",
         "logout": "تسجيل الخروج"
+    },
+    "administration": {
+        "title": "الإدارة",
+        "subtitle": "إدارة إعدادات النظام والصلاحيات",
+        "tabs": {
+            "profiles": "الملفات الشخصية والصلاحيات",
+            "dropdowns": "القوائم المنسدلة",
+            "users": {
+                "label": "المستخدمين",
+                "title": "إدارة المستخدمين",
+                "comingSoon": "قريباً - سيتم إضافة صفحة إدارة المستخدمين"
+            },
+            "system": {
+                "label": "إعدادات النظام",
+                "title": "إعدادات النظام",
+                "comingSoon": "قريباً - سيتم إضافة إعدادات النظام"
+            },
+            "audit": {
+                "label": "سجل المراجعة",
+                "title": "سجل المراجعة",
+                "comingSoon": "قريباً - سيتم إضافة سجل المراجعة"
+            }
+        }
     },
     "properties": {
         "title": "العقارات",
@@ -82,22 +105,13 @@
             "hasBalcony": "شرفة",
             "hasElevator": "مصعد",
             "propertyFeatures": "مميزات العقار",
-            "unitOffer": "عرض الوحدة",
-            "unitFor": "الوحدة لـ",
             "status": "الحالة",
-            "area": "المنطقة",
-            "unitLicense": "ترخيص الوحدة",
             "license": "الترخيص",
             "mallName": "اسم المول",
             "communityName": "اسم المجمع",
             "updateInformation": "معلومات التحديث",
-            "reminderTime": "وقت التذكير",
-            "rentTo": "مستأجر حتى",
-            "reminderDate": "تاريخ التذكير",
-            "repeatedStatement": "بيان متكرر",
             "ownerInformation": "معلومات المالك",
-            "propertyOfferedBy": "معروض من قبل",
-            "callNote": "ملاحظة المكالمة"
+            "propertyOfferedBy": "معروض من قبل"
         },
         "options": {
             "select": "اختر",

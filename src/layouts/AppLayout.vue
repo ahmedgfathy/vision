@@ -93,20 +93,12 @@
         <!-- Admin Section -->
         <div v-if="authStore.user?.role === 'admin'" class="mt-4 pt-4 border-t border-gray-200">
           <router-link 
-            to="/dashboard/admin/settings" 
+            to="/dashboard/admin" 
             class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
-            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin/settings') }"
-          >
-            <Settings :size="20" />
-            {{ t('nav.settings') }}
-          </router-link>
-          <router-link 
-            to="/dashboard/admin/profiles" 
-            class="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg mb-1 transition-colors"
-            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin/profiles') }"
+            :class="{ 'bg-blue-100 text-blue-700 font-medium': $route.path.startsWith('/dashboard/admin') }"
           >
             <Shield :size="20" />
-            Profiles & Permissions
+            {{ t('nav.administration') }}
           </router-link>
         </div>
       </nav>
@@ -165,7 +157,6 @@ import {
   Users, 
   Briefcase, 
   ListTodo, 
-  Settings, 
   Languages, 
   User, 
   LogOut,
